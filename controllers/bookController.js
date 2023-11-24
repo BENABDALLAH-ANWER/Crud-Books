@@ -57,6 +57,16 @@ const getBookById = async (req,res) =>{
      .catch(error => res.status(400).json({ error }));
  };
 
+ const getBooksByIdAuthor = async (req, res) => {
+    const authorId = req.params.id;
+      try{
+        const books = await Book.findByAuthor(authorId);
+        res.status(201).json(books)
+      }catch (error) {
+        res.status(500).json({message : error.message})
+    }
+  };
+
 
 
 
@@ -64,6 +74,7 @@ module.exports = {
     createBook,
     updateBookById , 
     deleteBookById ,
-    getBookById
+    getBookById , 
+    getBooksByIdAuthor
 
 }

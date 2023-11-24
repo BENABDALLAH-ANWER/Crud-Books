@@ -5,8 +5,12 @@ const categorySchema = mongoose.Schema({
     type: String,
     enum: ['categ1', "categ2"] , 
     default:'categ1'
-    }
+    } , 
+    
 
-});
+
+} , {timestamps:true}
+
+);
 
 module.exports = mongoose.model('Category' , categorySchema);

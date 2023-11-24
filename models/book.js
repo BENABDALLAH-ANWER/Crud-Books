@@ -19,10 +19,11 @@ const bookSchema = mongoose.Schema({
     }]   , 
 
     
-    
 
-} , {
-    strictPopulate: false
-});
+} , {timestamps:true} );
+
+bookSchema.statics.findByAuthor = function(authorId) {
+    return this.find({ author: authorId });
+  };
 
 module.exports = mongoose.model('Book' , bookSchema);
