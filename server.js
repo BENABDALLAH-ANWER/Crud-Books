@@ -1,5 +1,8 @@
 const http = require('http');
 const app = require('./app');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -45,3 +48,9 @@ server.on('listening', () => {
 });
 
 server.listen(port);
+
+
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+
